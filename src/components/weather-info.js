@@ -51,6 +51,11 @@ const Info = () => {
     })
 
     useEffect(() => {
+        if(link) {
+        }
+    },[link])
+
+    useEffect(() => {
         if(link.current) {
             setTemp(link.current.temp_c)
         }
