@@ -37,13 +37,14 @@ const Info = () => {
             
     },[location])
 
-    const fetchData = async(changer) => {
+    
+
+    useEffect(() => {
+        const fetchData = async(changer) => {
         let url = `http://api.weatherapi.com/v1/current.json?key=8a88406f21734422b8504112210507&q=${location.coordinates.lat},${location.coordinates.lng}&aqi=no`
         const response = await fetch(url).then(data => data.json())
         setLink(response)
         }
-
-    useEffect(() => {
         if(location.loaded === true){
             fetchData()
     }        
