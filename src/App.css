@@ -1,38 +1,96 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2A3D45;
+}
+
+.container {
+  background-color: rgb(201, 241, 239);
+  padding: 20px;
+  color: #2A3D45;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50vw;
+  height: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.weather-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.place {
+  width: 100%;
+  font-size: 40px;
+}
+
+.leftSide {
+  font-size: 40px;
+  background-color: rgb(2, 70, 70);
+  color: white;
+  width: 20vw;
+  height: 35vh;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
+  flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+  width: 7vw;
+  position: fixed;
+  bottom: 40vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.temperature {
+  font-size: 50px;
+  font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button {
+padding: 10px;
+font-size: 20px;
+background-color: black;
+color: white;
+cursor: pointer;
+
+}
+
+.rightSide {
+  background-color: rgb(118, 201, 173);
+  width: 20vw;
+  height: 35vh;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+.description {
+  font-weight: 800;
+  font-size: 22px;
+  background-color: rgb(37, 36, 83);
   color: white;
+  padding: 7px;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
