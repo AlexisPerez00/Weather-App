@@ -55,19 +55,6 @@ const Info = () => {
         }
     },[link])
 
-    const convertTemp = () => {
-        let changer = null
-        if(changer) {
-             setTemp(link.current.temp_c)
-             changer = false
-        }
-        else {
-
-            setTemp(link.current.temp_f)
-            changer = true
-        }
-    }
-
 
     return (
         <div className="container">
@@ -78,7 +65,7 @@ const Info = () => {
                     <h5 className="time">{link.location.localtime}</h5>
                     <img alt="icon" src={link.current.condition.icon}></img>
                     <h5 className="temperature">{temp}°</h5>
-                    <button onClick={() => convertTemp()}>Change degrees F / C</button>
+                    <button onClick={() => setTemp(link.current.temp_f)}>Change degrees F / C</button>
                 </div>
                     
 
