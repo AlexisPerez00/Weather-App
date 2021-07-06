@@ -10,7 +10,7 @@ const Info = () => {
         }
     })
     const [link, setLink] = useState({})
-    const [temp, setTemp] = useState('')
+    // const [temp, setTemp] = useState('')
 
 
     useEffect(() => {
@@ -55,11 +55,11 @@ const Info = () => {
         }
     },[link])
 
-    useEffect(() => {
-        if(link.current) {
-            setTemp(link.current.temp_c)
-        }
-    },[link])
+    // useEffect(() => {
+    //     if(link.current) {
+    //         setTemp(link.current.temp_c)
+    //     }
+    // },[link])
 
 
     return (
@@ -70,8 +70,8 @@ const Info = () => {
                 <div className="leftSide">
                     <h5 className="time">{link.location.localtime}</h5>
                     <img alt="icon" src={link.current.condition.icon}></img>
-                    <h5 className="temperature">{temp}°</h5>
-                    <button onClick={() => setTemp(link.current.temp_f)}>Change degrees F / C</button>
+                    <h5 className="temperature">{link.current.temp_c}°</h5>
+                    {/* <button onClick={() => setTemp(link.current.temp_f)}>Change degrees F / C</button> */}
                 </div>
                     
 
