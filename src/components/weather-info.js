@@ -9,7 +9,7 @@ const Info = () => {
             lng: ""
         }
     })
-    const [link, setLink] = useState({})
+    const [data, setData] = useState({})
     const [temp, setTemp] = useState('')
 
 
@@ -35,51 +35,64 @@ const Info = () => {
             navigator.geolocation.getCurrentPosition(success, error)
             }
             
-    },[location])
+    },[])
 
     
 
     useEffect(() => {
-        const fetchData = async(changer) => {
-        let url = `http://api.weatherapi.com/v1/current.json?key=8a88406f21734422b8504112210507&q=${location.coordinates.lat},${location.coordinates.lng}&aqi=no`
+        const fetchData = async() => {
+        let url = `http://api.weatherapi.com/v1/current.json?key=8a88406f21734422b8504112210507&q=${location.coordinates.lat},${location.coordinates.lng}&aqi=yes`
         const response = await fetch(url).then(data => data.json())
-        setLink(response)
+        setData(response)
         }
         if(location.loaded){
             fetchData()
     }        
-    })
+    }, [location])
+
 
     useEffect(() => {
-        if(link) {
+        if(data.current) {
+            setTemp(data.current.temp_c + " C")
         }
-    },[link])
+    },[data])
 
-    useEffect(() => {
-        if(link.current) {
-            setTemp(link.current.temp_c)
+    const handleTemp = () => {
+        if(!temp) {
+            setTemp("?")
         }
-    },[link])
+        if(temp === data.current.temp_c + " C") {
+            setTemp(data.current.temp_f + " F")
+        }
+        else {
+            setTemp(data.current.temp_c + " C")
+        }
+        
+
+    }
 
 
     return (
         <div className="container">
-            {(typeof link.current !== 'undefined') ? ( 
+            {(typeof data.current !== 'undefined') ? ( 
             <div className="weather-container">
-                <h4 className="place">{link.location.region}, {link.location.country}</h4>
+                <h4 className="place">{data.location.region}, {data.location.country}</h4>
                 <div className="leftSide">
-                    <h5 className="time">{link.location.localtime}</h5>
-                    <img alt="icon" src={link.current.condition.icon}></img>
-                    <h5 className="temperature">{temp}°</h5>
-                    <button onClick={() => setTemp(link.current.temp_f)}>Change degrees F / C</button>
+                    <h5 className="time">{data.location.localtime}</h5>
+                    <span className="temperature">
+                        <img alt="icon" src={data.current.condition.icon}></img>
+                        <h5>{temp}°</h5>                    
+                    </span>
+
+                    <button onClick={handleTemp}>Change degrees F / C</button>
                 </div>
                     
 
                 <div className="rightSide">
-                    <p className="description">{link.current.condition.text}</p>
-                    <p>Wind speed: {link.current.wind_kph}km/h</p>
-                    <p>Humidity: {link.current.humidity}%</p>
-                    <p>Clouds: {link.current.cloud}%</p>
+                    <p className="description">{data.current.condition.text}</p>
+                    <p>Wind speed: {data.current.wind_kph}km/h</p>
+                    <p>Humidity: {data.current.humidity}%</p>
+                    <p>Clouds: {data.current.cloud}%</p>
                 </div> 
 
             </div>

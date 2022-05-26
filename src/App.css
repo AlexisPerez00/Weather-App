@@ -10,27 +10,26 @@
 
 body {
   height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2A3D45;
+  background-image: url("https://astelus.com/wp-content/viajes/clima-de-la-palma.jpg");
 }
 
 .container {
-  background-color: rgb(201, 241, 239);
+  background-color: rgba(3, 41, 39, 0.61);
   padding: 20px;
-  color: #2A3D45;
+  color: #e6e6e6;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50vw;
-  height: auto;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* height: auto; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .weather-container {
-  width: 100%;
+  width: 80%;
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -46,20 +45,27 @@ body {
   background-color: rgb(2, 70, 70);
   color: white;
   width: 20vw;
-  height: 35vh;
+  /* height: 35vh; */
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
   text-align: center;
   flex-direction: column;
 }
 
-img {
-  width: 7vw;
-  position: fixed;
-  bottom: 40vh;
+.temperature {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.temperature {
+img {
+  width: 50%;
+  /* position: fixed; */
+  /* bottom: 40vh; */
+}
+
+.temperature h5 {
   font-size: 50px;
   font-weight: 700;
 }
